@@ -20,8 +20,8 @@ public class Stack {
     
     public void push(Object element){
         if(!stackFull()){
-            stackPointer++;
             elements[stackPointer] = element;
+            stackPointer++;
         }else{
             System.err.println("Pila Llena");
         }
@@ -30,15 +30,15 @@ public class Stack {
     
     public void pop(){
         if(!emptyStack()){
-            elements[stackPointer] = null;
             stackPointer--;
+            elements[stackPointer] = null;
         }else{
             System.err.println("La pila está vacia");
         }
     }
     
     public boolean stackFull(){
-        return (stackPointer == elements.length);
+        return (stackPointer == size);
     }
     
     public boolean emptyStack(){
@@ -46,7 +46,7 @@ public class Stack {
     }
     
     public void printStack(){
-        for(int i=0; i<elements.length;i++)
+        for(int i=0; i< size;i++)
             if(elements[i]!=null)
                 System.out.println((String) elements[i]);
     }
