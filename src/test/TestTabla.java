@@ -17,27 +17,19 @@ import matrizPredictiva.Tabla;
 public class TestTabla {
     public static void main(String[] args) throws IOException {
         Tabla t = new Tabla();
+        System.out.println("------------- GRAMATICA COMPLETA");
         ArrayList<String> x = t.contenido("src/Archivos/gramatica.txt");
         for (int i = 0; i < x.size(); i++) {
             System.out.println(x.get(i));
-        }
-        
-        System.out.println("-------------LADO DERECHO DE LA GRAMATICA");
-        Stack ladoDerecho = new Stack();
-        for(String line : x){
-            String[] division = line.split("->");
-            ladoDerecho.push(division[1].trim());
-        }
-        
-        ladoDerecho.printStack();
-        
+        }   
+        System.out.println("------------- LADO DERECHO DE LA GRAMATICA");
+        Stack w = t.llenadoDerecho(x);
+        w.printStack();
         System.out.println("--------------- NO TERMINALES");
         Stack y = t.llenadoNoTerminales(x);
         y.printStack();
         System.out.println("--------------- TERMINALES");
-        ArrayList<String> x1 = t.contenido("src/Archivos/gramatica.txt");
-        Stack z = t.llenadoTerminales(x1);
+        Stack z = t.llenadoTerminales(x);
         z.printStack();
-       
     }
 }

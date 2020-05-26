@@ -19,11 +19,16 @@ public class Tabla {
 
     private Stack terminales;
     private Stack noTerminales;
-    private Stack ladoProduccion;
+    private Stack ladoDerecho;
     private ArrayList<String> cont;
 
+    public Tabla(){
+        this.terminales = new Stack();
+        this.noTerminales = new Stack();
+        this.ladoDerecho = new Stack();
+        this.cont = new ArrayList();
+    }
     public ArrayList<String> contenido(String filePath) throws IOException {
-        cont = new ArrayList();
         Lector lector = new Lector(filePath);
         String line = null;
 
@@ -33,26 +38,49 @@ public class Tabla {
 
         return cont;
     }
+    
+    public Stack llenadoDerecho(ArrayList <String> cont){
+        for (int i = 0; i < cont.size(); i++) {
+            String aux1 = cont.get(i).split("->")[1].trim();
+            ladoDerecho.push(aux1);
+        }
+        return ladoDerecho;
+    }
 
     public Stack llenadoNoTerminales(ArrayList<String> cont) {
-        noTerminales = new Stack();
-
         for (int i = 0; i < cont.size(); i++) {
-            String aux1 = cont.get(i).split("->")[0];
+            String aux1 = cont.get(i).split("->")[0].trim();
             if (noTerminales.isEmpty()) {
                 noTerminales.push(aux1);
             } else if (noTerminales.trace(aux1)) {
                 noTerminales.push(aux1);
             }
         }
-
         return noTerminales;
     }
 
     public Stack llenadoTerminales(ArrayList<String> cont) {
-        terminales = new Stack();
-        String[] array;
-        String aux1, aux2 = "";
+        for (int i = 0; i < ladoDerecho.size(); i++) {
+            Node n = ladoDerecho.getBase();
+            while(n != null){
+                String aux = n.getInfo().toString();
+                if(!aux.contains(" ")){
+                    if(noTerminales.trace(aux.trim())) {
+                        if(terminales.isEmpty()) terminales.push(aux);
+                        else if(terminales.trace(aux)) terminales.push(aux);
+                    } 
+                }else if(aux.contains(" ")){
+                    String[] aux1 = aux.split(" ");
+                    for (String aux11 : aux1) {
+                        if (noTerminales.trace(aux11.trim())) {
+                            if(terminales.isEmpty()) terminales.push(aux11);
+                        else if(terminales.trace(aux11)) terminales.push(aux11);
+                        }
+                    }
+                }
+                n = n.getNext();
+            }         
+        }
 
 //        for (int i = 0; i < cont.size(); i++) {
 //            if(cont.get(i).split("->")[1] == null) aux1 = "";
