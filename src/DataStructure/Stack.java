@@ -50,4 +50,18 @@ public class Stack {
             if(elements[i]!=null)
                 System.out.println((String) elements[i]);
     }
+
+    public int getSize() {
+        return size;
+    }
+
+    public Object[] getElements() {
+        return elements;
+    }
+
+    public int getStackPointer() {
+        return stackPointer;
+    }
+    
+    
 }

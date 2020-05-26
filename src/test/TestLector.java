@@ -16,9 +16,10 @@ import java.io.IOException;
 public class TestLector {
     public static void main(String[] args) throws IOException {
         Lector lector = new Lector("src/Archivos/gramatica.txt");
+        int c = 1;
         String line = null;
         while((line=lector.readLine())!=null){
-            System.out.println(line);
+            System.out.println(c++ + " " + line);
         }
     }
 }

@@ -5,7 +5,7 @@ stmt_list -> stmt stmt_list
 stmt -> id := expression ;
 expression -> primary primarytail
 primarytail -> aritop primary primarytail
-primarytail ->
+primarytail -> 
 primary -> ( expression )
 primary -> id
 primary -> intliteral
