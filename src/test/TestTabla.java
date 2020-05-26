@@ -21,6 +21,16 @@ public class TestTabla {
         for (int i = 0; i < x.size(); i++) {
             System.out.println(x.get(i));
         }
+        
+        System.out.println("-------------LADO DERECHO DE LA GRAMATICA");
+        Stack ladoDerecho = new Stack();
+        for(String line : x){
+            String[] division = line.split("->");
+            ladoDerecho.push(division[1].trim());
+        }
+        
+        ladoDerecho.printStack();
+        
         System.out.println("--------------- NO TERMINALES");
         Stack y = t.llenadoNoTerminales(x);
         y.printStack();
