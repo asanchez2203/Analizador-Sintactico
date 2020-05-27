@@ -119,6 +119,14 @@ public class Stack implements Stackable{
             aux = aux.getNext();
         }
     }
+    
+     public void print_Stack() {
+        Node aux = base;
+        while (aux != null) {
+            System.out.println(aux.info);
+            aux = aux.getNext();
+        }
+    }
 
     public Node getBase() {
         return base;

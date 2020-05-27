@@ -24,7 +24,7 @@ public class TestTabla {
         }   
         System.out.println("------------- LADO DERECHO DE LA GRAMATICA");
         Stack w = t.llenadoDerecho(x);
-        w.printStack();
+        w.print_Stack();
         System.out.println("--------------- NO TERMINALES");
         Stack y = t.llenadoNoTerminales(x);
         y.printStack();
