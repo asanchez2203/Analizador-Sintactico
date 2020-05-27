@@ -24,12 +24,12 @@ public class TestTabla {
         }   
         System.out.println("------------- LADO DERECHO DE LA GRAMATICA");
         Stack w = t.llenadoDerecho(x);
-        w.printStack();
+        t.imprimeArreglo(t.arregloLadoDerecho(w));
         System.out.println("--------------- NO TERMINALES");
         Stack y = t.llenadoNoTerminales(x);
-        y.printStack();
+        t.imprimeArreglo(t.arregloEstatico(y));
         System.out.println("--------------- TERMINALES");
         Stack z = t.llenadoTerminales(x);
-        z.printStack();
+        t.imprimeArreglo(t.arregloEstatico(z));
     }
 }

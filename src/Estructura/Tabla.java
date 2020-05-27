@@ -64,10 +64,6 @@ public class Tabla {
             Node n = ladoDerecho.getBase();
             while(n != null){
                 String aux = n.getInfo().toString();
-                if(aux.equals("")) {
-                    i++;
-                    n = n.getNext();
-                }
                 if(!aux.contains(" ")){
                     if(noTerminales.trace(aux.trim())) {
                         if(terminales.isEmpty()) terminales.push(aux);
@@ -85,7 +81,6 @@ public class Tabla {
                 n = n.getNext();
             }     
         }
-
 //        for (int i = 0; i < cont.size(); i++) {
 //            if(cont.get(i).split("->")[1] == null) aux1 = "";
 //            else  aux1 = cont.get(i).split("->")[1].replace(" ", "");
@@ -118,6 +113,52 @@ public class Tabla {
 //                }
 //                terminales.push(array[i]);
         return terminales;
+    }
+    
+    public String[] arregloLadoDerecho(Stack s){
+        Stack nueva;
+        Node no;
+        
+        nueva = new Stack();
+        no = s.getBase();
+        while(no != null){
+            nueva.push(no.getInfo());
+            no = no.getNext();
+        }
+        
+        String[] aux = new String[nueva.size()];
+        no = nueva.getBase();
+        for (int i = 0; i < aux.length; i++) {
+            aux[i] = no.getInfo().toString();
+            if(no.getNext() != null) no = no.getNext();
+        }
+            
+        return aux;
+    }
+    
+    public String[] arregloEstatico(Stack s){
+        Stack nueva;
+        Node no;
+        
+        nueva = new Stack();
+        no = s.getBase();
+        while(no != null){
+            if(!no.getInfo().equals("")) nueva.push(no.getInfo());
+            no = no.getNext();
+        }
+        
+        String[] aux = new String[nueva.size()];
+        no = nueva.getBase();
+        for (int i = 0; i < aux.length; i++) {
+            aux[i] = no.getInfo().toString();
+            if(no.getNext() != null) no = no.getNext();
+        }
+            
+        return aux;
+    }
+    
+    public void imprimeArreglo(String[] s){
+        for (String item : s) System.out.println(item);
     }
 
 }
