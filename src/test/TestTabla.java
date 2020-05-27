@@ -8,7 +8,7 @@ package test;
 import Pila.Stack;
 import java.io.IOException;
 import java.util.ArrayList;
-import matrizPredictiva.Tabla;
+import Estructura.Tabla;
 
 /**
  *
