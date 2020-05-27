@@ -114,6 +114,7 @@ public class Stack implements Stackable{
     public void printStack() {
         Node aux = base;
         while (aux != null) {
+            if(aux.info.equals("")) aux = aux.getNext();
             System.out.println(aux.info);
             aux = aux.getNext();
         }

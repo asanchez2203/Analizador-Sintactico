@@ -64,6 +64,10 @@ public class Tabla {
             Node n = ladoDerecho.getBase();
             while(n != null){
                 String aux = n.getInfo().toString();
+                if(aux.equals("")) {
+                    i++;
+                    n = n.getNext();
+                }
                 if(!aux.contains(" ")){
                     if(noTerminales.trace(aux.trim())) {
                         if(terminales.isEmpty()) terminales.push(aux);
@@ -79,7 +83,7 @@ public class Tabla {
                     }
                 }
                 n = n.getNext();
-            }         
+            }     
         }
 
 //        for (int i = 0; i < cont.size(); i++) {
