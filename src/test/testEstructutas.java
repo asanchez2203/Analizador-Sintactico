@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class testEstructutas {
     public static void main(String[] args) throws IOException {
         EstructurasEstaticas ee = new EstructurasEstaticas();
-        
+        System.out.println("HOLA :D");
         System.out.println("---- GRAMATICA");
         ArrayList<String> x = ee.contenido("src/Archivos/gramatica.txt");
         ee.impresion(x); 
