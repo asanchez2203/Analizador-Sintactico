@@ -16,7 +16,11 @@ import java.util.ArrayList;
 public class EstructurasEstaticas {
     String[] terminales, noTerminales, ladoDerecho, cont;
 
-    public EstructurasEstaticas(int nLineas) {
+    public EstructurasEstaticas(String filePath) {
+        int nLineas=0;     
+        try {
+            nLineas = new Lector(filePath).numLineas();
+        } catch (Exception e) { }
         this.terminales = new String[nLineas];
         this.noTerminales = new String[nLineas];
         this.ladoDerecho = new String[nLineas];
