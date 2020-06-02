@@ -7,7 +7,6 @@ package Estructura;
 
 import Util.Lector;
 import java.io.IOException;
-import java.util.ArrayList;
 
 /**
  *
