@@ -58,7 +58,9 @@ public class EstructurasEstaticas {
                 }
             }
         }
-        return noTerminales;
+        String[] noTerminalesFinal = new String[pointer];
+        for(int i=0;i<pointer;i++) noTerminalesFinal[i] = noTerminales[i];
+        return noTerminalesFinal;
     }
     
     public String[] llenadoTerminales(String[] ladoDerecho){
@@ -73,23 +75,23 @@ public class EstructurasEstaticas {
                             terminales[pointer] = aux1;
                             pointer++;
                         }
-
                     }  
                 }else if(!ladoDerecho[i].equals("")){
                     if (!contains(terminales,ladoDerecho[i]) && 
                                 !contains(noTerminales,ladoDerecho[i])){
                         terminales[pointer] = ladoDerecho[i];
                         pointer++;
-                    } 
-
+                    }
                 }
             }
         }
-        return terminales;
+        String[] terminalesFinal = new String[pointer];
+        for(int i=0;i<pointer;i++) terminalesFinal[i] = terminales[i];
+        return terminalesFinal;
     }
     
     public void impresion(String[] x){
-        for (int i = 0; i < x.length; i++) if(x[i]!=null) System.out.println(x[i]);
+        for (int i = 0; i < x.length; i++) /*if(x[i]!=null)*/ System.out.println(x[i]);
     }
     
     private boolean contains(String[] array,String word){
