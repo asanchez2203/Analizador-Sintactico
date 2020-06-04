@@ -18,7 +18,7 @@ public class LectorPrograma {
     //Ruta donde se encuentra el archivo
     private final String ruta; 
     //Lector del archivo
-    private BufferedReader lector;
+    private BufferedReader reader;
     private FileReader fr;
     
     
@@ -32,7 +32,7 @@ public class LectorPrograma {
         try{
             //Se crea el objeto para leer el archivo
             fr = new FileReader(ruta);
-            lector = new BufferedReader(fr);
+            reader = new BufferedReader(fr);
         }catch(FileNotFoundException e){
             //Mensaje de error por si no se puede acceder al archivo
             System.err.println("No se ha podido encontrar el archivo " 
@@ -43,8 +43,8 @@ public class LectorPrograma {
     //Metodo para cerrar el archivo
     public void cerrarArchivo(){
         try{
-            //Se cierra el lector
-            lector.close();
+            //Se cierra el reader
+            reader.close();
         }catch(IOException e){
             //Mensaje de error si no se puede cerrar el archivo
             System.err.println("No se ha podido cerrar el archivo " 
@@ -63,7 +63,7 @@ public class LectorPrograma {
             //Se abre el archivo
             abrirArchivo();
             //Se cuentan las lineas que contenga el archivo
-            while(lector.readLine() != null) cont ++;
+            while(reader.readLine() != null) cont ++;
             //Se inicializa el array que contendra las lineas de texto
             cadenas = new String[cont];
             
@@ -71,7 +71,7 @@ public class LectorPrograma {
             //Se re-instancian los objetos para poder leer el archivo
             abrirArchivo();
             for (int i = 0; i < cadenas.length; i++) 
-                cadenas[i] = lector.readLine();
+                cadenas[i] = reader.readLine();
             //Se cierra el archivo
             cerrarArchivo();
         }catch(IOException e){
@@ -79,4 +79,17 @@ public class LectorPrograma {
         } 
         return cadenas;
     } 
+    
+    public String readLine() throws IOException{
+        String line = reader.readLine();
+        return (line!=null)? line : null;
+    }
+    
+    public int numLineas() throws IOException{
+        int contador = 0;
+        String linea;
+        while((linea=reader.readLine())!=null) contador++;
+        reader = new BufferedReader(new FileReader(this.ruta));
+        return contador;
+    }
 }

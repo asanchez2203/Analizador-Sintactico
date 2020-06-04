@@ -5,7 +5,7 @@
  */
 package Estructura;
 
-import Util.Lector;
+import Lector.LectorPrograma;
 import java.io.IOException;
 
 /**
@@ -17,23 +17,14 @@ public class EstructurasEstaticas {
 
     public EstructurasEstaticas(String filePath) {
         int nLineas=0;     
-        try {
-            nLineas = new Lector(filePath).numLineas();
-        } catch (Exception e) { }
+        nLineas = new LectorPrograma(filePath).extraerTexto().length;
         this.terminales = new String[nLineas];
         this.noTerminales = new String[nLineas];
         this.ladoDerecho = new String[nLineas];
-        this.cont = new String[nLineas];
     }
     
     public String[] contenido(String filePath) throws IOException {
-        Lector lector = new Lector(filePath);
-        String line;
-
-        for(int i=0;i<cont.length;i++){
-            line=lector.readLine();
-            cont[i]=line;
-        }
+        cont = new LectorPrograma(filePath).extraerTexto();
         return cont;
     }
     
