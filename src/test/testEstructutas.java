@@ -10,7 +10,6 @@ import java.io.IOException;
 public class testEstructutas {
     public static void main(String[] args) throws IOException {
         EstructurasEstaticas ee = new EstructurasEstaticas("src/Archivos/gramatica.txt");
-        System.out.println("HOLA :D");
         System.out.println("---- GRAMATICA");
         String[] x = ee.contenido("src/Archivos/gramatica.txt");
         ee.impresion(x); 
