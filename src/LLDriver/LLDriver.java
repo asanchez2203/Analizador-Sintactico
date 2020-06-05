@@ -45,9 +45,8 @@ public class LLDriver {
                 if((produccion = matrizPredictiva[findIndex(x, noTerminales)][findIndex(a.getLexema().toString(), terminales)])!=0){
                     pila.pop();
                     String[] prod = ladoDerecho[produccion-1].split(" ");
-                    for (int i = prod.length-1; i >= 0; i--) {
-                        pila.push(prod[i]);
-                    }
+                    for (int i = prod.length-1; i >= 0; i--) pila.push(prod[i]);
+                    x = pila.peek().getInfo().toString();
                 }else{
                     System.err.println("ERROR SINTACTICO");
                 }
