@@ -3,9 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Users/Alexis%20Sanchez/Documentos/NetBeansProjects/Analizador%20Sintactico/src/MatrizPredictiva/MatrizPredictiva.java</file>
-            <file>file:/D:/Users/Alexis%20Sanchez/Documentos/NetBeansProjects/Analizador%20Sintactico/src/Archivos/gramatica.txt</file>
-            <file>file:/D:/Users/Alexis%20Sanchez/Documentos/NetBeansProjects/Analizador%20Sintactico/src/LLDriver/LLDriver.java</file>
+            <file>file:/D:/Programas%20Java/Analizador-Sintactico/src/MatrizPredictiva/MatrizPredictiva.java</file>
+            <file>file:/D:/Programas%20Java/Analizador-Sintactico/src/Lector/LectorPrograma.java</file>
+            <file>file:/D:/Programas%20Java/Analizador-Sintactico/src/test/testEstructutas.java</file>
+            <file>file:/D:/Programas%20Java/Analizador-Sintactico/src/Estructura/EstructurasEstaticas.java</file>
         </group>
     </open-files>
 </project-private>

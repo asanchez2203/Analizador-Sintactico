@@ -54,7 +54,11 @@ public class AFN {
                 else if (esLetraMinuscula(cadena)){
                     edo=9;
                     pointB++;
-                }         
+                }
+                else if(esDosPuntos(cadena)){
+                    edo = 11;
+                    pointB++;
+                }
                 //IF PARA ERRORES
                 else edo = 10;     
                 break;
@@ -193,6 +197,17 @@ public class AFN {
                 t = generarToken(cadena.substring(pointA,pointB), 404);
                 actualizaApuntadores();
                 return t;
+            case 11:
+                if(esIgual(cadena)){
+                    edo = 12;
+                }else{
+                    edo = 10;
+                }
+                break;
+            case 12:
+                t = generarToken(cadena.substring(pointA,pointB), 60);
+                actualizaApuntadores();
+                return t;  
         }
         return null;
     }  
@@ -226,6 +241,14 @@ public class AFN {
     
     private boolean esGuionBajo(String cadena){
         return cadena.charAt(pointB) == '_';
+    }
+    
+    private boolean esDosPuntos(String cadena){
+        return cadena.charAt(pointB) == ':';
+    }
+    
+    private boolean esIgual(String cadena){
+        return cadena.charAt(pointB) == '=';
     }
     
     private boolean esSimbolo(char caracter){
