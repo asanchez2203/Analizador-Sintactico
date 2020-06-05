@@ -13,3 +13,4 @@ primary -> realliteral
 aritop -> +
 aritop -> -
 aritop -> *
+system_goal -> inicio $
