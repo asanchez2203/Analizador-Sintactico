@@ -279,6 +279,7 @@ public class AFN {
                 t = afnToken(cadena);
                 if(t!=null) return t;
             }
+            System.out.println("Cambio de linea");
             pointerLineas++;
             reiniciarEstado();
         }
