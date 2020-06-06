@@ -21,6 +21,7 @@ public class LLDriver {
     private final int[][] matrizPredictiva;
     private final AFN analizadorLexico;
     private final String gramaticaPath = "src/Archivos/gramatica.txt";
+    private MatrizPredictiva matriz;
     
     public LLDriver(String filePath) throws IOException{
         pila = new Stack();
@@ -28,7 +29,18 @@ public class LLDriver {
         ladoDerecho = estructuras.llenadoDerecho(estructuras.contenido(gramaticaPath));
         noTerminales = estructuras.llenadoNoTerminales(estructuras.contenido(gramaticaPath));
         terminales = estructuras.llenadoTerminales(ladoDerecho);
-        matrizPredictiva = new MatrizPredictiva(noTerminales, terminales).getMatrizPredictiva();
+        matriz = new MatrizPredictiva(noTerminales, terminales);  
+        
+        System.out.println("SIMBOLOS TERMINALES");
+        estructuras.impresion(terminales);
+        System.out.println("\nSIMBOLOS NO TERMINALES");
+        estructuras.impresion(noTerminales);
+        System.out.println("\nLADO DERECHO DE LAS PRODUCCIONES");
+        estructuras.impresion(ladoDerecho);
+        
+        System.out.println("**MATRIZ PREDICTIVA**");
+        matriz.imprimeTabla();
+        matrizPredictiva = matriz.getMatrizPredictiva();
         
         LectorPrograma lp = new LectorPrograma(filePath);
         String[] lineasPrograma = lp.extraerTexto();

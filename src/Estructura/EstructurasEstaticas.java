@@ -9,9 +9,9 @@ import java.io.IOException;
  */
 public class EstructurasEstaticas {
     String[] terminales, noTerminales, ladoDerecho, cont;
-
+    int nLineas=0; 
+    
     public EstructurasEstaticas(String filePath) {
-        int nLineas=0;     
         nLineas = new LectorPrograma(filePath).extraerTexto().length;
         this.terminales = new String[nLineas];
         this.noTerminales = new String[nLineas];
