@@ -1,4 +1,4 @@
 program Ejemplo
 begin
-    a:=10;
+    Cuenta:=10;
 End
