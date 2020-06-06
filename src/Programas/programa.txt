@@ -1,5 +1,5 @@
-programa Ejemplo
+programa
 begin
-    Cuenta:=10;
+    a :=10;
     Salario:=(10 * 20);
 end
