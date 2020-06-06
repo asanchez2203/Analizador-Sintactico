@@ -1,5 +1,5 @@
 programa
 begin
-    a :=10;
+    Cuenta :=10;
     Salario:=(10 * 20);
 end
