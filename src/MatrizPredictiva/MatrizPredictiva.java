@@ -19,7 +19,6 @@ public class MatrizPredictiva {
     private void setValues(){
         //[FILA][COLUMNA]
         matrizPredictiva[0][0] = 1; //Interseccion programa-inicio
-        matrizPredictiva[8][0] = 16; //Interseccion programa-inicio
 
         matrizPredictiva[1][1] = 2; //Interseccion begin-program
 

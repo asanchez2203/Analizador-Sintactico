@@ -51,4 +51,14 @@ public class Token {
         return "Lexema: " +(String) lexema + " Atributo: " +String.valueOf(atributo) +" " +tipo;
     }
     
+    public String getTipo(){
+        if(atributo==404) return "Error";
+        if(atributo==500) return "id";
+        if(atributo==501) return "intliteral";
+        if(atributo==502) return "realliteral";
+        if(atributo==503) return ":=";
+        if(atributo>=1 && atributo<=256) return lexema.toString();
+        if(atributo>=300 && atributo <=303) return lexema.toString();
+        return null;
+    }
 }

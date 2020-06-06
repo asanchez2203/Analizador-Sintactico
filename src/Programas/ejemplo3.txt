@@ -1,6 +1,4 @@
 program Ejemplo
 begin
-    Cuenta = 23.67 + (numero - 89);
-    Numero = Cuenta * 123.99;
-    Resultado = Numero+Cuenta;
+    a:=10;
 End

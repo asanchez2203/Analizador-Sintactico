@@ -3,7 +3,6 @@ package test;
 import Lector.LectorPrograma;
 import Tokens.AFN;
 import Tokens.Token;
-import java.util.Scanner;
 
 /**
  *
@@ -11,14 +10,13 @@ import java.util.Scanner;
  */
 public class TestCambiosAnalizadorLexico {
     public static void main(String[] args) {
-        LectorPrograma lp = new LectorPrograma("src/Programas/ejemplo.txt");
+        LectorPrograma lp = new LectorPrograma("src/Programas/programa.txt");
         String[] x = lp.extraerTexto();
         AFN analizador = new AFN(x);
         
         Token t;
         while((t = analizador.getNextToken())!=null){
             System.out.println(t.toString());
-            new Scanner(System.in).nextLine();
         }
     }
 }

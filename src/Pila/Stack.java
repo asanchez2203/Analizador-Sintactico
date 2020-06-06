@@ -1,8 +1,5 @@
-
 package Pila;
-/**
- * @author andres & roger
- */
+
 public class Stack implements Stackable{
     private Node base, anterior, siguiente;
     
@@ -37,6 +34,7 @@ public class Stack implements Stackable{
 
     @Override
     public void pop() {
+        System.out.println("Se elmino algo de la pila");
         if(!isEmpty()){
             if(base.getNext() == null)
                 base = null;
@@ -110,4 +108,13 @@ public class Stack implements Stackable{
         }
         return siguiente;
     }
+    
+    public void printStack() {
+        Node aux = base;
+        while (aux != null) {
+            System.out.println(aux.info.toString());
+            aux = aux.getNext();
+        }
+    }
+    
 }

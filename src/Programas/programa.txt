@@ -1,0 +1,4 @@
+programa
+begin
+    Salario:=(10 * 20);
+end
