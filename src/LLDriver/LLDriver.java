@@ -9,6 +9,7 @@ import Tokens.AFN;
 import MatrizPredictiva.MatrizPredictiva;
 import Tokens.Token;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -58,6 +59,7 @@ public class LLDriver {
                     x = pila.peek().getInfo().toString();
                 }else{
                     System.out.println("*************************ERROR SINTACTICO*****************************");
+                    JOptionPane.showMessageDialog(null, "ERROR SINTACTICO DETECTADO","ERROR",JOptionPane.ERROR_MESSAGE);
                     break;
                 }
             }else{
@@ -74,6 +76,7 @@ public class LLDriver {
                     x = pila.peek().getInfo().toString();
                 }else{
                     System.out.println("*************************ERROR SINTACTICO*****************************");
+                    JOptionPane.showMessageDialog(null, "ERROR SINTACTICO DETECTADO","ERROR",JOptionPane.ERROR);
                     break;
                 }
             }

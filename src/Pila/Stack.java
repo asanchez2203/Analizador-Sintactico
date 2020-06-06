@@ -34,7 +34,6 @@ public class Stack implements Stackable{
 
     @Override
     public void pop() {
-        System.out.println("Se elmino algo de la pila");
         if(!isEmpty()){
             if(base.getNext() == null)
                 base = null;
@@ -85,7 +84,7 @@ public class Stack implements Stackable{
         if (!isEmpty() && !trace(n.getInfo())) {
             Node aux = base;
             while (aux != null) {
-                if (aux.getInfo().equals(n.getInfo())) break;
+                if (aux.equals(n)) break;
                 anterior = aux;
                 aux = aux.getNext();
             }
