@@ -4,12 +4,15 @@
 */
 package Tokens;
 
+import java.util.ArrayList;
+
 public class AFN {
     private int edo; //indicador de estado
     private int pointA, pointB; //Punteros de la cadena
     int pointerLineas;
     String[] lineas;
-    Token t = null;  
+    Token t = null;
+    ArrayList <Token> listaToken;
     
     //Array para simbolos
     private char[] cs = {';', '+', '-', '*', '(', ')'};
@@ -24,6 +27,7 @@ public class AFN {
         pointB = 0;
         this.lineas = lineas;
         this.pointerLineas = 0;
+        listaToken = new ArrayList();
     }
     
     //Metodo que modela el funcionamiento del AFN diseñado para el
@@ -87,6 +91,7 @@ public class AFN {
                             --pointB;
                         }
                         t = generarToken(cadena.substring(pointA,pointB), 500);
+                        listaToken.add(t);
                         actualizaApuntadores();
                         return t;
                     }
@@ -99,6 +104,7 @@ public class AFN {
                         --pointB;
                     }
                     t = generarToken(cadena.substring(pointA,pointB), 500);
+                    listaToken.add(t);
                     actualizaApuntadores();
                     return t;
                 }
@@ -124,6 +130,7 @@ public class AFN {
                         --pointB;
                     }
                     t = generarToken(cadena.substring(pointA,pointB), 500);
+                    listaToken.add(t);
                     actualizaApuntadores();
                     return t;
                 }
@@ -135,6 +142,7 @@ public class AFN {
                         if(esFinalDeLinea(cadena))  pointB=cadena.length();
                         if(esSimbolo(cadena.charAt(pointB-1))) --pointB;
                         t = generarToken(cadena.substring(pointA,pointB), 501);
+                        listaToken.add(t);
                         actualizaApuntadores();
                         return t;
                     }else{
@@ -148,6 +156,7 @@ public class AFN {
                     if(esFinalDeLinea(cadena))  pointB=cadena.length();
                     if(esSimbolo(cadena.charAt(pointB-1))) --pointB;
                     t = generarToken(cadena.substring(pointA,pointB), 501);
+                    listaToken.add(t);
                     actualizaApuntadores();
                     return t;
                 }
@@ -166,17 +175,20 @@ public class AFN {
                 } else if(esFinalDeLinea(cadena) || esEspacio(cadena)){
                     if(esSimbolo(cadena.charAt(pointB-1))) --pointB;
                     t = generarToken(cadena.substring(pointA,pointB), 502);
+                    listaToken.add(t);
                     actualizaApuntadores();
                     return t;
                 } else{
                     if(esSimbolo(cadena.charAt(pointB-1))) --pointB;
                     t = generarToken(cadena.substring(pointA,pointB), 502);
+                    listaToken.add(t);
                     actualizaApuntadores();
                     return t;
                 }
                 break;
             case 8:
                 t = generarToken(String.valueOf(cadena.charAt(pointA)), (int)cadena.charAt(pointA));
+                listaToken.add(t);
                 pointB++;
                 actualizaApuntadores();
                 return t;
@@ -187,6 +199,7 @@ public class AFN {
                         PalabraReservada word;
                         if((word = esReservada(cadena.substring(pointA, pointB)))!=null){
                             t = generarToken(cadena.substring(pointA, pointB), word.getAtributo());
+                            listaToken.add(t);
                             actualizaApuntadores();
                             return t;
                         } else edo=10;
@@ -200,12 +213,14 @@ public class AFN {
             case 10:
                 if(esFinalDeLinea(cadena)) pointB=cadena.length();
                 t = generarToken(cadena.substring(pointA,pointB), 404);
+                listaToken.add(t);
                 actualizaApuntadores();
                 return t;
             case 11:
                 if(esIgual(cadena)){
                     pointB++;
                     t = generarToken(cadena.substring(pointA,pointB), 503);
+                    listaToken.add(t);
                     actualizaApuntadores();
                     return t;  
                 }else{
@@ -312,6 +327,7 @@ public class AFN {
         return null;
     }
     
+    
     public boolean endFile(){
         return (pointB==lineas[pointerLineas].length() && pointerLineas == lineas.length-1);
     }
@@ -321,5 +337,8 @@ public class AFN {
         pointB=0;
         pointA=0;
     }
-    
+
+    public ArrayList getListaToken() {
+        return listaToken;
+    }
 }

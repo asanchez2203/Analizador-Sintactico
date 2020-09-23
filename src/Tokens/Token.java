@@ -44,11 +44,14 @@ public class Token {
             case 404: tipo= "Error"; break;
             case 500: tipo= "Identificador"; break;
             case 501: tipo= "Numero Natural"; break;
-            case 502: tipo= "Numero De Punto Flotante"; break; 
+            case 502: tipo= "Numero de Punto Flotante"; break; 
         }
         }else{ tipo = "Simbolo";}
-        if(atributo>=300 && atributo<=303) tipo="PALABRA RESERVADA";
-        return "Lexema: " +(String) lexema + " Atributo: " +String.valueOf(atributo) +" " +tipo;
+        if(atributo>=300 && atributo<=303) tipo="Palabra reservada";
+        return "\033[32m LEXEMA: " + "\033[30m" +(String) lexema + 
+               "\033[32m ATRIBUTO: " + "\033[30m" + String.valueOf(atributo) + 
+               "\033[32m TOKEN: " + "\033[30m" + tipo +
+               "\033[32m TIPO: " + "\033[30m" + Character.getName(atributo);
     }
     
     public String getTipo(){
