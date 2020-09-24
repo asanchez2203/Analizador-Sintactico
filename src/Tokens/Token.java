@@ -14,10 +14,12 @@ package Tokens;
 public class Token {
     protected int atributo;
     protected Object lexema;
+    private int ID;
     
     public Token(int atributo, Object lexema){
         this.atributo = atributo;
         this.lexema = lexema;
+        this.ID=0;
     }
 
     public int getAtributo() {
@@ -63,5 +65,13 @@ public class Token {
         if(atributo>=1 && atributo<=256) return lexema.toString();
         if(atributo>=300 && atributo <=303) return lexema.toString();
         return null;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
     }
 }
