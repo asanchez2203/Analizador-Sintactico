@@ -13,12 +13,15 @@ public class AFN {
     String[] lineas;
     Token t = null;
     ArrayList <Token> listaToken;
+    int auxID = 600;
+    int signID = 50;
+    int line = 1;
     
     //Array para simbolos
-    private char[] cs = {';', '+', '-', '*', '(', ')'};
+    private char[] cs = {';', '+', '-', '*', '(', ')', '='};
     
     //Array para palabras reservadas
-    private final PalabraReservada[] reservadas = {new PalabraReservada(300, "programa")
+    private final PalabraReservada[] reservadas = {new PalabraReservada(300, "program")
             ,new PalabraReservada(301, "begin"), new PalabraReservada(302, "end")};
     
     public AFN(String[] lineas){
@@ -51,13 +54,13 @@ public class AFN {
                 } 
                 //IF PARA SIMBOLOS
                 else if(esSimbolo(cadena.charAt(pointB))){
-                    if(esFinalDeLinea(cadena)) edo = 8;
+                    if(esFinalDeLinea(cadena)) {edo = 8;}
                     else edo = 8;                  
                 }           
                 //IF PARA PALABRAS RESERVADAS
                 else if (esLetraMinuscula(cadena)){
                     edo=9;
-                    pointB++;
+                    //pointB++;
                 }
                 else if(esDosPuntos(cadena)){
                     edo = 11;
@@ -90,7 +93,14 @@ public class AFN {
                         if(esSimbolo(cadena.charAt(pointB-1))){
                             --pointB;
                         }
-                        t = generarToken(cadena.substring(pointA,pointB), 500);
+                        if(buscaID(cadena.substring(pointA,pointB)) > 0){
+                            t = generarToken(cadena.substring(pointA,pointB), 500, buscaID(cadena.substring(pointA,pointB)), line);
+                            listaToken.add(t);
+                            actualizaApuntadores();
+                            return t;
+                        }
+                        t = generarToken(cadena.substring(pointA,pointB), 500, auxID, line);
+                        auxID++;
                         listaToken.add(t);
                         actualizaApuntadores();
                         return t;
@@ -103,7 +113,8 @@ public class AFN {
                     if(esSimbolo(cadena.charAt(pointB-1))){
                         --pointB;
                     }
-                    t = generarToken(cadena.substring(pointA,pointB), 500);
+                    t = generarToken(cadena.substring(pointA,pointB), 500, auxID, line);
+                    auxID++;
                     listaToken.add(t);
                     actualizaApuntadores();
                     return t;
@@ -129,19 +140,19 @@ public class AFN {
                     if(esSimbolo(cadena.charAt(pointB-1))){
                         --pointB;
                     }
-                    t = generarToken(cadena.substring(pointA,pointB), 500);
+                    t = generarToken(cadena.substring(pointA,pointB), 500, auxID, line);
+                    auxID++;
                     listaToken.add(t);
                     actualizaApuntadores();
                     return t;
                 }
                 break;
-                //Me quede aqui
             case 5:
                 if(esNumero(cadena)){
                     if(esFinalDeLinea(cadena) || esEspacio(cadena)){
                         if(esFinalDeLinea(cadena))  pointB=cadena.length();
                         if(esSimbolo(cadena.charAt(pointB-1))) --pointB;
-                        t = generarToken(cadena.substring(pointA,pointB), 501);
+                        t = generarToken(cadena.substring(pointA,pointB), 501, Integer.parseInt(cadena.substring(pointA,pointB)), line);
                         listaToken.add(t);
                         actualizaApuntadores();
                         return t;
@@ -155,7 +166,7 @@ public class AFN {
                 } else{
                     if(esFinalDeLinea(cadena))  pointB=cadena.length();
                     if(esSimbolo(cadena.charAt(pointB-1))) --pointB;
-                    t = generarToken(cadena.substring(pointA,pointB), 501);
+                    t = generarToken(cadena.substring(pointA,pointB), 501, Integer.parseInt(cadena.substring(pointA,pointB)), line);
                     listaToken.add(t);
                     actualizaApuntadores();
                     return t;
@@ -174,31 +185,32 @@ public class AFN {
                     pointB++;
                 } else if(esFinalDeLinea(cadena) || esEspacio(cadena)){
                     if(esSimbolo(cadena.charAt(pointB-1))) --pointB;
-                    t = generarToken(cadena.substring(pointA,pointB), 502);
+                    t = generarToken(cadena.substring(pointA,pointB), 502, Float.parseFloat(cadena.substring(pointA,pointB)), line);
                     listaToken.add(t);
                     actualizaApuntadores();
                     return t;
                 } else{
                     if(esSimbolo(cadena.charAt(pointB-1))) --pointB;
-                    t = generarToken(cadena.substring(pointA,pointB), 502);
+                    t = generarToken(cadena.substring(pointA,pointB), 502, Float.parseFloat(cadena.substring(pointA,pointB)), line);
                     listaToken.add(t);
                     actualizaApuntadores();
                     return t;
                 }
                 break;
             case 8:
-                t = generarToken(String.valueOf(cadena.charAt(pointA)), (int)cadena.charAt(pointA));
+                t = generarToken(String.valueOf(cadena.charAt(pointA)), (int)cadena.charAt(pointA), signID, line);
+                signID++;
                 listaToken.add(t);
                 pointB++;
                 actualizaApuntadores();
                 return t;
             case 9:
                 if(esLetraMinuscula(cadena)){
-                    if(esFinalDeLinea(cadena) || esEspacio(cadena)){
-                        if(esFinalDeLinea(cadena)) pointB=cadena.length();
+                    if(esFinalDeLinea(cadena) || esEspacio(cadena)){  
+                        if(esFinalDeLinea(cadena)) {pointB=cadena.length();}
                         PalabraReservada word;
                         if((word = esReservada(cadena.substring(pointA, pointB)))!=null){
-                            t = generarToken(cadena.substring(pointA, pointB), word.getAtributo());
+                            t = generarToken(cadena.substring(pointA, pointB), word.getAtributo(), word.getAtributo(),line);
                             listaToken.add(t);
                             actualizaApuntadores();
                             return t;
@@ -211,15 +223,17 @@ public class AFN {
                 }
                 break;
             case 10:
-                if(esFinalDeLinea(cadena)) pointB=cadena.length();
-                t = generarToken(cadena.substring(pointA,pointB), 404);
+                if(esFinalDeLinea(cadena)) {pointB=cadena.length();}
+                t = generarToken(cadena.substring(pointA,pointB), 404, 404, line);
+                auxID++;
                 listaToken.add(t);
                 actualizaApuntadores();
                 return t;
             case 11:
                 if(esIgual(cadena)){
                     pointB++;
-                    t = generarToken(cadena.substring(pointA,pointB), 503);
+                    t = generarToken(cadena.substring(pointA,pointB), 503, auxID, line);
+                    auxID++;
                     listaToken.add(t);
                     actualizaApuntadores();
                     return t;  
@@ -230,16 +244,23 @@ public class AFN {
         }
         return null;
     }  
-    
+   
+    //Busta que haya tokens iguales para duplicar ID
+    public float buscaID(String s){
+        for(Token aux : listaToken) if(aux.lexema.equals(s)) return t.ID;
+        return 0;
+    }
     /*
         Metodos donde se filtran los caracteres
     */
-    private boolean esLetraMinuscula(String cadena){
-       return cadena.charAt(pointB) >=  'a' && cadena.charAt(pointB) <=  'z';
+    private boolean esLetraMinuscula(String cadena){ 
+       return cadena.charAt(pointB) >=  'a' && cadena.charAt(pointB) <=  'z' ||
+               cadena.charAt(pointA) >=  'a' && cadena.charAt(pointA) <=  'z'; //Agregué este para inicio de archivo
     }
     
     private boolean esLetraMayuscula(String cadena){
-        return cadena.charAt(pointB) >=  'A' && cadena.charAt(pointB) <=  'Z';
+        return cadena.charAt(pointB) >=  'A' && cadena.charAt(pointB) <=  'Z'||
+               cadena.charAt(pointA) >=  'A' && cadena.charAt(pointA) <=  'Z'; //Agregué este para inicio de archivo;
     }
     
     private boolean esNumero(String cadena){
@@ -293,15 +314,27 @@ public class AFN {
     */
     
     //Metodo que genera un token, y lo devuelve
-    private Token generarToken(String lexema,int identificador){
+//    private Token generarToken(String lexema,int identificador){
+//        for (PalabraReservada reservada : reservadas) {
+//            if (lexema.equals(reservada.getPalabra())) {
+//                identificador = reservada.getAtributo();
+//            }
+//        }
+//        Token tk = new Token(identificador, lexema);
+//        return tk;
+//    }
+    
+    //Metodo que genera un token, y lo devuelve
+    private Token generarToken(String lexema,int identificador, float id, int line){
         for (PalabraReservada reservada : reservadas) {
             if (lexema.equals(reservada.getPalabra())) {
                 identificador = reservada.getAtributo();
             }
         }
-        Token tk = new Token(identificador, lexema);
+        Token tk = new Token(identificador, lexema, id, line);
         return tk;
     }
+    
     
     //Se actualizan los apuntadores para poder iniciar de nuevo en el AFN
     private void actualizaApuntadores(){
@@ -323,6 +356,7 @@ public class AFN {
             }
             pointerLineas++;
             reiniciarEstado();
+            line++;
         }
         return null;
     }
