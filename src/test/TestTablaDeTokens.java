@@ -36,7 +36,7 @@ public class TestTablaDeTokens {
 //                id++; //AUMENTA EL ID
 //            }
             //IMPRIME
-            System.out.println(t.toString()/* + "\033[32m REPETICION: " + "\033[30m" +n */);
+            System.out.println(t.toString() + "\033[32m REPETICION: " + "\033[30m" +n );
         }
     }
     

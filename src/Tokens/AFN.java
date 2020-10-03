@@ -245,11 +245,7 @@ public class AFN {
         return null;
     }  
    
-    //Busta que haya tokens iguales para duplicar ID
-    public float buscaID(String s){
-        for(Token aux : listaToken) if(aux.lexema.equals(s)) return t.ID;
-        return 0;
-    }
+    
     /*
         Metodos donde se filtran los caracteres
     */
@@ -331,8 +327,15 @@ public class AFN {
                 identificador = reservada.getAtributo();
             }
         }
+        if(buscaID(lexema) > 0) id = buscaID(lexema);
         Token tk = new Token(identificador, lexema, id, line);
         return tk;
+    }
+    
+    //Busta que haya tokens iguales para duplicar ID
+    public float buscaID(String lexema){
+        for(Token aux : listaToken) if(aux.getLexema().equals(lexema)) return aux.getID();
+        return 0;
     }
     
     
@@ -372,7 +375,7 @@ public class AFN {
         pointA=0;
     }
 
-    public ArrayList getListaToken() {
+    public ArrayList <Token> getListaToken() {
         return listaToken;
     }
 }

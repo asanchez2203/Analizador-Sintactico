@@ -17,6 +17,7 @@ public class Token {
     protected float ID;
     protected int line;
     
+    
     public Token(int atributo, Object lexema){
         this.atributo = atributo;
         this.lexema = lexema;
@@ -26,7 +27,7 @@ public class Token {
     public Token(int atributo, Object lexema, float id, int line){
         this.atributo = atributo;
         this.lexema = lexema;
-        this.ID=id;
+        this.ID = id;
         this.line = line;
     }
 
@@ -59,11 +60,11 @@ public class Token {
         }else{ tipo = "Simbolo";}
         if(atributo>=300 && atributo<=303) tipo="Palabra reservada";
         return "\033[32m LEXEMA: " + "\033[30m" +(String) lexema + 
-               //"\033[32m ATRIBUTO: " + "\033[30m" + String.valueOf(atributo) + 
-               //"\033[32m TOKEN: " + "\033[30m" + tipo +
-//               "\033[32m TIPO: " + "\033[30m" + Character.getName(atributo) +
-               "\033[32m ID: " + "\033[30m" + ID;
-               //"\033[32m LINEA: " + "\033[30m" + line;
+               //"\t\033[32m ATRIBUTO: " + "\033[30m" + String.valueOf(atributo) + 
+               "\t\033[32m TOKEN: " + "\033[30m" + tipo +
+               //"\t\033[32m TIPO: " + "\033[30m" + Character.getName(atributo) +
+               "\t\033[32m ID: " + "\033[30m" + ID +
+               "\t\033[32m LINEA: " + "\033[30m" + line;
     }
     
     public String getTipo(){
