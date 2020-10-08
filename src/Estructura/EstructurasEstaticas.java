@@ -1,12 +1,9 @@
+/*CLASE QUE LLENA LAS PILAS SEGUN LA GRAMITICA*/
 package Estructura;
 
 import Lector.LectorPrograma;
 import java.io.IOException;
 
-/**
- *
- * @author andre
- */
 public class EstructurasEstaticas {
     String[] terminales, noTerminales, ladoDerecho, cont;
     int nLineas=0; 
@@ -18,6 +15,7 @@ public class EstructurasEstaticas {
         this.ladoDerecho = new String[nLineas];
     }
     
+    //TODA LA GRAMATICA
     public String[] contenido(String filePath) throws IOException {
         cont = new LectorPrograma(filePath).extraerTexto();
         return cont;

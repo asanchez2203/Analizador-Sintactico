@@ -9,7 +9,7 @@ import java.io.IOException;
  */
 public class TestLLDriver {
     public static void main(String[] args) throws IOException {
-        LLDriver analizador = new LLDriver("src/Programas/programa.txt");
+        LLDriver analizador = new LLDriver("src/Programas/ejemplo.txt");
         analizador.run();
     }
 }
