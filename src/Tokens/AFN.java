@@ -21,7 +21,7 @@ public class AFN {
     private char[] cs = {';', '+', '-', '*', '(', ')', '='};
     
     //Array para palabras reservadas
-    private final PalabraReservada[] reservadas = {new PalabraReservada(300, "programa")
+    private final PalabraReservada[] reservadas = {new PalabraReservada(300, "program")
             ,new PalabraReservada(301, "begin"), new PalabraReservada(302, "end")};
     
     public AFN(String[] lineas){

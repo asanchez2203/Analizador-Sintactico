@@ -1,4 +1,4 @@
-package LLDriver; //:D
+package LLDriver;
 
 import Pila.Stack;
 import java.io.IOException;
