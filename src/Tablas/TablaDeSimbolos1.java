@@ -2,16 +2,15 @@ package Tablas;
 
 import Tokens.Token;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
 
-public class TablaDeSimbolos {
+
+public class TablaDeSimbolos1 {
     ArrayList <Fila> tsimbolos; //Tabla de simbolos a llenar
     ArrayList <Token> ttoken; //Tabla de Tokens
 
     
     //Para crear la tabla de simbolos, se expota la tabla de Tokens
-    public TablaDeSimbolos(ArrayList<Token> ttoken) { 
+    public TablaDeSimbolos1(ArrayList<Token> ttoken) { 
         this.tsimbolos = new ArrayList();
         this.ttoken = ttoken; 
     }
@@ -26,7 +25,8 @@ public class TablaDeSimbolos {
                         to.getID(), 
                         numeroLineas(aux, 
                         to.getID()), valor(to), 
-                        numeroRepeticiones(aux, to.getID()));
+                        numeroRepeticiones(aux, to.getID()),
+                        to.getAtributo());
             tsimbolos.add(f);
         }
         

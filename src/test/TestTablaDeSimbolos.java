@@ -2,7 +2,7 @@ package test;
 
 import Lector.LectorPrograma;
 import Tablas.Fila;
-import Tablas.TablaDeSimbolos;
+import Tablas.TablaDeSimbolos1;
 import Tokens.AFN;
 import Tokens.Token;
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ public class TestTablaDeSimbolos {
         //Llenado de la tabla de Tokens
         while((t = analizador.getNextToken()) != null) aux.add(t);
      
-        TablaDeSimbolos ts = new TablaDeSimbolos(aux);
+        TablaDeSimbolos1 ts = new TablaDeSimbolos1(aux);
         for(Fila f : ts.tablaSimbolos()) System.out.println(f.imprimir());
     }
 }

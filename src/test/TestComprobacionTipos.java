@@ -2,7 +2,7 @@ package test;
 
 import ComprobacionTipos.ComprobacionTipos;
 import Lector.LectorPrograma;
-import Tablas.TablaDeSimbolos;
+import Tablas.TablaDeSimbolos1;
 import Tokens.AFN;
 import Tokens.Token;
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ public class TestComprobacionTipos {
 //        //Llenado de la tabla de Tokens
 //        while((t = analizador.getNextToken()) != null) aux.add(t);
 //     
-//        TablaDeSimbolos ts = new TablaDeSimbolos(aux);
+//        TablaDeSimbolos1 ts = new TablaDeSimbolos1(aux);
 //        ComprobacionTipos comprueba = new ComprobacionTipos(ts.tablaSimbolos());
     }
 }
