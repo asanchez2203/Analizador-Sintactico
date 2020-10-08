@@ -7,14 +7,16 @@ public class Fila{
     protected String linea; //Numero de linea, concatenar con ,
     protected float valor; //Valor si es Real convertir  
     protected int repeticion; 
+    protected int atributo; //Valor de identidad original(no es el ID)
 
-    public Fila(Object nombre, String tipo, float id, String linea, float valor, int repeticion) {
+    public Fila(Object nombre, String tipo, float id, String linea, float valor, int repeticion, int atributo) {
         this.nombre = nombre;
         this.tipo = tipo;
         this.id = id;
         this.linea = linea;
         this.valor = valor;
         this.repeticion = repeticion;
+        this.atributo = atributo;
     }
     
     public String imprimir(){
@@ -73,7 +75,13 @@ public class Fila{
     public void setRepeticion(int repeticion) {
         this.repeticion = repeticion;
     }
-    
-    
-    
+
+    public int getAtributo() {
+        return atributo;
+    }
+
+    public void setAtributo(int atributo) {
+        this.atributo = atributo;
+    }
+
 }
