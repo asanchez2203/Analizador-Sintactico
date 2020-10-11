@@ -79,9 +79,9 @@ public class ComprobacionTipos {
                     int tipo = compruebaTipos(t1, t2);
 
                     System.out.println("Resultado de comparar " + t1.getLexema() +"-"+t1.getTipo()+" y " + t2.getLexema()+"-"+t1.getTipo()+ " es: " + tipo);
-                    if(t2.getAtributo()==500){
+                    //if(t2.getAtributo()==500){
                         searchByID(t2.getID()).setAtributo(tipo);
-                    }
+                    //}
                     t1.setAtributo(tipo);
                     //t1.setLexema("Expresion");
                     //FinalArray.add(t2);
