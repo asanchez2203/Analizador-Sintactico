@@ -9,6 +9,7 @@ public class ComprobacionTipos {
     
     private final ArrayList<Token> tablaToken;    
     private final ArrayList<Token> sinRepetir;
+    int idProv = 800;
 
     //private final ArrayList<Fila> tablaSimbolos;
     ArrayList<Token> triada;
@@ -72,24 +73,29 @@ public class ComprobacionTipos {
             if(indexes.size() > 0){
                 //Token t1 = triadaTemp.get(indexes.get(tokensValidos));
                 Token t1 = searchByID(triadaTemp.get(indexes.get(tokensValidos)).getID());
-                //FinalArray.add(t1);
+                addTok(t1);
                 for(int j = tokensValidos; j >=1; j--){
                     //Token t2 = triadaTemp.get(indexes.get(j-1));
                     Token t2 = searchByID(triadaTemp.get(indexes.get(j-1)).getID());
                     int tipo = compruebaTipos(t1, t2);
 
+                    Token temp = new Token(tipo, "<<Expresion>>",idProv++,i);
+                    addTok(t2);
+                    addTok(temp);
+                    //t1.setAtributo(tipo);
                     System.out.println("Resultado de comparar " + t1.getLexema() +"-"+t1.getTipo()+" y " + t2.getLexema()+"-"+t1.getTipo()+ " es: " + tipo);
-                    //if(t2.getAtributo()==500){
+                    if(t2.getAtributo()==500)
                         searchByID(t2.getID()).setAtributo(tipo);
                     //}
-                    t1.setAtributo(tipo);
+                    //t1.setAtributo(tipo);
+                    t1 = temp;
                     //t1.setLexema("Expresion");
                     //FinalArray.add(t2);
                 }
             }          
         }
         System.out.println("------------------------");
-        printArray(sinRepetir);
+        printArray(FinalArray);
     }
     
     private boolean isReal(float value){
@@ -120,5 +126,10 @@ public class ComprobacionTipos {
         for(Token t : Tokens)
             if(t.getID() == item.getID()) return true;
         return false;
+    }
+    
+    private void addTok(Token t){
+       // if(!exist(FinalArray, t))
+            FinalArray.add(t);
     }
 }

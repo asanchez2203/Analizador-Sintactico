@@ -30,6 +30,12 @@ public class Token {
         this.ID = id;
         this.line = line;
     }
+    
+    public Token(int atributo, Object lexema, float id){
+        this.atributo = atributo;
+        this.lexema = lexema;
+        this.ID = id;
+    }
 
     public int getAtributo() {
         return atributo;
