@@ -1,7 +1,8 @@
 package test;
 
 import Lector.LectorPrograma;
-import NotacionInfijaAPrefija.InfijaAPrefija;
+import Notaciones.InfijaAPosfija;
+import Notaciones.InfijaAPrefija;
 import Tokens.AFN;
 import Tokens.Token;
 import java.util.ArrayList;
@@ -10,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author Alexis Sanchez
  */
-public class InfijaAPrefijaTest {
+public class TestNotaciones {
     public static void main(String[] args) {
         LectorPrograma lp = new LectorPrograma("src/Programas/ejemplo.txt");
         String[] x = lp.extraerTexto();
@@ -20,15 +21,19 @@ public class InfijaAPrefijaTest {
         while((t = analizador.getNextToken())!=null){
             al.add(t);
         }
-        
+        System.out.println("-------- NOTACIÓN PRESFIJA --------");
         for (int i = 1; i <= x.length; i++) {
-            //System.out.println("Entra");
             InfijaAPrefija conversor = new InfijaAPrefija(i, al);
             if(conversor.getExpresion() > 2){
-                //System.out.println("Entra");
                 conversor.printResultado(conversor.convertirExpresion());
-            }
-                
+            }      
+        }
+        System.out.println("-------- NOTACIÓN POSFIJA --------");
+        for (int i = 1; i <= x.length; i++) {
+            InfijaAPosfija conversor2 = new InfijaAPosfija(i, al);
+            if(conversor2.getExpresion() > 2){
+                conversor2.printResultado(conversor2.convertirExpresion());
+            }      
         }
 
     }

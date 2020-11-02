@@ -1,8 +1,7 @@
-package NotacionInfijaAPrefija;
+package Notaciones;
 
 import Tokens.Token;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Stack;
 
 /**
@@ -10,9 +9,10 @@ import java.util.Stack;
  * @author Alexis Sanchez
  */
 public class InfijaAPrefija {
-    private Stack stack;
-    private ArrayList<Token> expresion,tokenList;
-    private int line;
+    private final Stack stack;
+    private final ArrayList<Token> expresion;
+    private final ArrayList<Token> tokenList;
+    private final int line;
      
     public InfijaAPrefija(int line,ArrayList<Token> tokenList){
         this.line = line;
