@@ -15,10 +15,12 @@ public class TestTablaDeSimbolos {
         
         Token t;
         ArrayList<Token> aux = new ArrayList();
-        //Llenado de la tabla de Tokens
         while((t = analizador.getNextToken()) != null) aux.add(t);
      
         TablaDeSimbolos1 ts = new TablaDeSimbolos1(aux);
-        for(Fila f : ts.tablaSimbolos()) System.out.println(f.imprimir());
+        System.out.println("\u001B[32mLexema\t        Tipo\t        ID\t        Linea\t        Valor\t     Repeticiones\t");
+        System.out.println("\u001B[34m-----------------------------------------------------------------------------------------------");
+        for(Fila f : ts.tablaSimbolos())System.out.println(f.imprimir());
+        
     }
 }

@@ -20,12 +20,12 @@ public class Fila{
     }
     
     public String imprimir(){
-        return "\033[32m LEXEMA: " + "\033[30m" +(String)nombre + 
-               "\t\033[32m TIPO: " + "\033[30m" + tipo + 
-               "\t\033[32m IDENTIFICADOR: " + "\033[30m" + id + 
-               "\t\033[32m linea: " + "\033[30m" + linea + 
-               "\t\033[32m VALOR: " + "\033[30m" + valor + 
-               "\t\033[32m NUM REPETICIONES: " + "\033[30m" + repeticion;
+        return (String)nombre + "\t" + 
+               "\t" + tipo + "\t" + 
+               "\t" + id + "\t" + 
+               "\t" + linea + "\t" +
+               "\t" + valor + "\t" +
+               "\t" + repeticion + "\t";
     }
 
     public Object getNombre() {

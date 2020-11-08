@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class TablaDeSimbolos1 {
     ArrayList <Fila> tsimbolos; //Tabla de simbolos a llenar
     ArrayList <Token> ttoken; //Tabla de Tokens
+    Fila f;
 
     
     //Para crear la tabla de simbolos, se expota la tabla de Tokens
@@ -17,7 +18,6 @@ public class TablaDeSimbolos1 {
     
     public ArrayList<Fila> tablaSimbolos(){
         ArrayList<Token> aux = primerTabla();
-        Fila f;
         
         for(Token to : aux){           
             f = new Fila(to.getLexema(), 
@@ -80,6 +80,16 @@ public class TablaDeSimbolos1 {
         if(t.getAtributo() == 500) return 0;
         else return Float.parseFloat((String)t.getLexema());
     }
+
+    public ArrayList<Fila> getTsimbolos() {
+        return tsimbolos;
+    }
+
+    public Fila getF() {
+        return f;
+    }
+
+    
     
 }
 

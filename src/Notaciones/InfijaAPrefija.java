@@ -4,10 +4,6 @@ import Tokens.Token;
 import java.util.ArrayList;
 import java.util.Stack;
 
-/**
- *
- * @author Alexis Sanchez
- */
 public class InfijaAPrefija {
     private final Stack stack;
     private final ArrayList<Token> expresion;
@@ -25,7 +21,6 @@ public class InfijaAPrefija {
         ArrayList<Token> expresionConvertida = new ArrayList<>();
         for (int i = expresion.size() - 1 ; i > 1; i--) {
             Token t = expresion.get(i);
-            //System.out.println("Token analizado: " + t.getLexema());
             if(t.getAtributo() < 255){
                 if(stack.contains(")") && t.getLexema().equals("(")){
                     String item;
@@ -44,7 +39,6 @@ public class InfijaAPrefija {
         do{
             if(stack.empty()) item = null;
             else item = stack.pop().toString();
-            //System.out.println("Item restante en pila: " + item);
             if(item!=null)
                 if(!item.equals(")") && !item.equals("(") && !item.equals(";"))
                     expresionConvertida.add(new Token((int)item.charAt(0),item,(int)item.charAt(0),line));
@@ -61,7 +55,6 @@ public class InfijaAPrefija {
                 n++;
                 expresion.add(t);
             }
-        //System.out.println(n);
         return n;      
     }
     
@@ -74,10 +67,7 @@ public class InfijaAPrefija {
     }
     
     public void printResultado(ArrayList<Token> res){
-        for(Token t: res){
-            System.out.print(t.getLexema()+" ");
-        }
-            
+        for(Token t: res)System.out.print(t.getLexema()+" ");
         System.out.println("");
     }
 }

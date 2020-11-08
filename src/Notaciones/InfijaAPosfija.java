@@ -19,7 +19,7 @@ public class InfijaAPosfija {
     
     public ArrayList<Token> convertirExpresion(){
         ArrayList<Token> expresionConvertida = new ArrayList<>();
-        for (int i = expresion.size() - 1 ; i > 1; i--) {
+        for (int i = 2; i < expresion.size()-1; i++) {
             Token t = expresion.get(i);
             if(t.getAtributo() < 255){
                 if(stack.contains("(") && t.getLexema().equals(")")){
@@ -40,12 +40,12 @@ public class InfijaAPosfija {
             if(stack.empty()) item = null;
             else item = stack.pop().toString();
             if(item!=null)
-                if(!item.equals(")") && !item.equals("(") && !item.equals(";"))
+                if(!item.equals("(") && !item.equals(")") && !item.equals(";"))
                     expresionConvertida.add(new Token((int)item.charAt(0),item,(int)item.charAt(0),line));
         }while(item!=null);
         expresionConvertida.add(expresion.get(1));
         expresionConvertida.add(expresion.get(0));
-        return acomodar(expresionConvertida);
+        return expresionConvertida;
     }
     
     //Obtiene las expresiones según el numero de linea al que pertenecen
@@ -56,7 +56,6 @@ public class InfijaAPosfija {
                 n++;
                 expresion.add(t);
             }
-        //System.out.println(n);
         return n;      
     }
     

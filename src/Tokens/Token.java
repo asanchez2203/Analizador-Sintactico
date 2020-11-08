@@ -65,10 +65,10 @@ public class Token {
         }
         }else{ tipo = "Simbolo";}
         if(atributo>=300 && atributo<=303) tipo="Palabra reservada";
-        return "\033[32m LEXEMA: " + "\033[30m" +(String) lexema + 
-               //"\t\033[32m ATRIBUTO: " + "\033[30m" + String.valueOf(atributo) + 
+        return "\033[32m LEXEMA: " + "\033[30m" +(String) lexema +
+               "\t\033[32m ATRIBUTO: " + "\033[30m" + String.valueOf(atributo) + 
                "\t\033[32m TOKEN: " + "\033[30m" + tipo +
-               //"\t\033[32m TIPO: " + "\033[30m" + Character.getName(atributo) +
+               "\t\033[32m TIPO: " + "\033[30m" + Character.getName(atributo) +
                "\t\033[32m ID: " + "\033[30m" + ID +
                "\t\033[32m LINEA: " + "\033[30m" + line;
     }
