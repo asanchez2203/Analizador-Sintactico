@@ -16,9 +16,7 @@ public class AFN {
     int auxID = 600;
     int signID = 50;
     int line = 1;
-    
-    //Array para simbolos
-    private char[] cs = {';', '+', '-', '*', '(', ')', '='};
+    private final char[] cs = {';', '+', '-', '*', '(', ')', '='};
     
     //Array para palabras reservadas
     private final PalabraReservada[] reservadas = {new PalabraReservada(300, "program")
@@ -244,19 +242,17 @@ public class AFN {
         }
         return null;
     }  
-   
-    
     /*
         Metodos donde se filtran los caracteres
     */
     private boolean esLetraMinuscula(String cadena){ 
        return cadena.charAt(pointB) >=  'a' && cadena.charAt(pointB) <=  'z' ||
-               cadena.charAt(pointA) >=  'a' && cadena.charAt(pointA) <=  'z'; //Agregué este para inicio de archivo
+               cadena.charAt(pointA) >=  'a' && cadena.charAt(pointA) <=  'z'; 
     }
     
     private boolean esLetraMayuscula(String cadena){
         return cadena.charAt(pointB) >=  'A' && cadena.charAt(pointB) <=  'Z'||
-               cadena.charAt(pointA) >=  'A' && cadena.charAt(pointA) <=  'Z'; //Agregué este para inicio de archivo;
+               cadena.charAt(pointA) >=  'A' && cadena.charAt(pointA) <=  'Z'; 
     }
     
     private boolean esNumero(String cadena){
@@ -298,35 +294,16 @@ public class AFN {
     }
     
     private PalabraReservada esReservada(String caracter){
-        boolean flag = false;
         for(PalabraReservada s : reservadas)
-            if(caracter.equals(s.getPalabra())){
-                return s;
-            }
+            if(caracter.equals(s.getPalabra())) return s;
         return null;                
     }
-    /*
-        Fin filtrado de caracteres
-    */
-    
-    //Metodo que genera un token, y lo devuelve
-//    private Token generarToken(String lexema,int identificador){
-//        for (PalabraReservada reservada : reservadas) {
-//            if (lexema.equals(reservada.getPalabra())) {
-//                identificador = reservada.getAtributo();
-//            }
-//        }
-//        Token tk = new Token(identificador, lexema);
-//        return tk;
-//    }
     
     //Metodo que genera un token, y lo devuelve
     private Token generarToken(String lexema,int identificador, float id, int line){
-        for (PalabraReservada reservada : reservadas) {
-            if (lexema.equals(reservada.getPalabra())) {
+        for (PalabraReservada reservada : reservadas) 
+            if (lexema.equals(reservada.getPalabra())) 
                 identificador = reservada.getAtributo();
-            }
-        }
         if(buscaID(lexema) > 0) id = buscaID(lexema);
         Token tk = new Token(identificador, lexema, id, line);
         return tk;
@@ -338,32 +315,24 @@ public class AFN {
         return 0;
     }
     
-    
     //Se actualizan los apuntadores para poder iniciar de nuevo en el AFN
     private void actualizaApuntadores(){
         pointA = pointB;
         edo = 0;
     }
-    
-//    public void AnalizaLinea(String cadena){
-//        while(pointB<cadena.length()) afnToken(cadena);
-//    }
-    
+
     public Token getNextToken(){
         for(int i = pointerLineas; i < lineas.length;i++){
             String cadena=lineas[i];
             while(pointB<cadena.length()){
-                //System.out.println("A: "+ pointA + " B: " +pointB+ " LINEA "+pointerLineas);
                 t = afnToken(cadena);
                 if(t!=null) return t;
             }
             pointerLineas++;
             reiniciarEstado();
             line++;
-        }
-        return null;
+        } return null;
     }
-    
     
     public boolean endFile(){
         return (pointB==lineas[pointerLineas].length() && pointerLineas == lineas.length-1);
@@ -375,7 +344,5 @@ public class AFN {
         pointA=0;
     }
 
-    public ArrayList <Token> getListaToken() {
-        return listaToken;
-    }
+    public ArrayList <Token> getListaToken() {return listaToken;}
 }
