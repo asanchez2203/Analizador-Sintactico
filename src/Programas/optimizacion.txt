@@ -1,0 +1,6 @@
+program
+begin
+    Variable = Saldo * 1;
+    Cuenta = Numero + 0;
+    Resultado = Saldo - Cuenta + 10;
+end
