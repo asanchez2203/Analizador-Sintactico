@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class testCodigoObjeto {
     public static void main(String[] args) {
-        LectorPrograma lp = new LectorPrograma("src/Programas/optimizacion.txt");
+        LectorPrograma lp = new LectorPrograma("src/Programas/ejemplo.txt");
         String[] x = lp.extraerTexto();
         AFN analizador = new AFN(x);
         Token t;
@@ -44,6 +44,9 @@ public class testCodigoObjeto {
                 
                 //pt.imprimir();
                 //System.out.println("\u001B[3m -------------------");
+               
+               gco.generaCodigo(art);
+               System.out.println("\u001B[3m -------------------");
             }    
         }
     }
