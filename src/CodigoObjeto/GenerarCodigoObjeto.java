@@ -23,6 +23,20 @@ public class GenerarCodigoObjeto {
             System.out.println("\t" + variables.get(i).getLexema().toString() + " DWord 0");
         }
     }
+    
+    public void generaMetodoMain(){
+                System.out.println(".Code\n"
+                + "\n"
+                + "start:\n"
+                + "	Invoke StdOut, Addr message ;mensaje al inciar\n"
+                + "	Invoke StdOut, Addr salto");
+    }
+    
+    public void setFinal(){
+        System.out.println("\tInvoke StdOut, Addr message2\n"
+                + "\tInvoke StdIn, Addr input, 10\n"
+                + "End start");
+    }
 
     public void generaCodigo(ArrayList<Terceto> tercetos) {
         String[] reg = {"EAX", "EBX", "ECX", "EDX"}; //Registros 
@@ -34,11 +48,11 @@ public class GenerarCodigoObjeto {
             //Asignaciones de registros MOV
             if (t.getOperador().equalsIgnoreCase("=") && i != tercetos.size() - 1) {
                 if (t.getX().substring(0, 4).equalsIgnoreCase("temp")) {
-                    System.out.println("MOV " + reg[cont] + " " + t.getY());
+                    System.out.println("\tMOV " + reg[cont] + " " + t.getY());
                     auxT.add(t.getX());
                     cont++;
                 } else {
-                    System.out.println("MOV " + reg[cont] + " " + t.getX());
+                    System.out.println("\tMOV " + reg[cont] + " " + t.getX());
                     auxT.add(t.getY());
                     cont++;
                 }
@@ -50,7 +64,7 @@ public class GenerarCodigoObjeto {
                     if (auxT.get(j).equals(t.getX())) {
                         for (int k = 0; k < reg.length; k++) {
                             if (auxT.get(k).equals(t.getY())) {
-                                System.out.println("ADD " + reg[j] + " " + reg[k]);
+                                System.out.println("\tADD " + reg[j] + " " + reg[k]);
                                 break;
                             }
                         }
@@ -63,7 +77,7 @@ public class GenerarCodigoObjeto {
                     if (auxT.get(j).equals(t.getX())) {
                         for (int k = 0; k < reg.length; k++) {
                             if (auxT.get(k).equals(t.getY())) {
-                                System.out.println("SUB " + reg[j] + " " + reg[k]);
+                                System.out.println("\tSUB " + reg[j] + " " + reg[k]);
                                 break;
                             }
                         }
@@ -76,7 +90,7 @@ public class GenerarCodigoObjeto {
                     if (auxT.get(j).equals(t.getX())) {
                         for (int k = 0; k < reg.length; k++) {
                             if (auxT.get(k).equals(t.getY())) {
-                                System.out.println("MUL " + reg[j] + " " + reg[k]);
+                                System.out.println("\tMUL " + reg[j] + " " + reg[k]);
                                 break;
                             }
                         }
@@ -89,7 +103,7 @@ public class GenerarCodigoObjeto {
             if (t.getOperador().equalsIgnoreCase("=") && i == tercetos.size() - 1){
                 for (int j = 0; j < reg.length; j++) {
                      if (auxT.get(j).equals(t.getY())){
-                         System.out.println("MOV " + t.getX() + " " + reg[j]);
+                         System.out.println("\tMOV " + t.getX() + " " + reg[j]);
                          break;
                      }
                 }

@@ -2,6 +2,13 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/Alexis%20Sanchez/Documents/GitHub/Analizador-Sintactico/src/Notaciones/InfijaAPosfija.java</file>
+            <file>file:/C:/Users/Alexis%20Sanchez/Documents/GitHub/Analizador-Sintactico/src/CodigoObjeto/GenerarCodigoObjeto.java</file>
+            <file>file:/C:/Users/Alexis%20Sanchez/Documents/GitHub/Analizador-Sintactico/src/Tokens/Token.java</file>
+            <file>file:/C:/Users/Alexis%20Sanchez/Documents/GitHub/Analizador-Sintactico/src/CodigoIntermedio/PorTercetos.java</file>
+            <file>file:/C:/Users/Alexis%20Sanchez/Documents/GitHub/Analizador-Sintactico/src/test/testCodigoObjeto.java</file>
+            <file>file:/C:/Users/Alexis%20Sanchez/Documents/GitHub/Analizador-Sintactico/src/Optimizacion/OptimizarTercetos.java</file>
+        </group>
     </open-files>
 </project-private>

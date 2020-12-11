@@ -31,6 +31,7 @@ public class testCodigoObjeto {
         GenerarCodigoObjeto gco = new GenerarCodigoObjeto();
         gco.headers();
         gco.generaVariables(filtrados);
+        gco.generaMetodoMain();
         
         for (int i = 1; i <= x.length; i++) {
             InfijaAPosfija conversor2 = new InfijaAPosfija(i, al);
@@ -46,9 +47,11 @@ public class testCodigoObjeto {
                 //System.out.println("\u001B[3m -------------------");
                
                gco.generaCodigo(art);
-               System.out.println("\u001B[3m -------------------");
+               //System.out.println("\u001B[3m -------------------");
             }    
         }
+        
+        gco.setFinal();
     }
     
     private static boolean filtra(ArrayList<Token> uno,Token t){
